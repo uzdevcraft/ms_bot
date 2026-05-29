@@ -8,9 +8,9 @@ const envSchema = z.object({
     .default('info'),
   BOT_TOKEN: z.string().min(1, 'BOT_TOKEN is required'),
   BACKEND_API_URL: z.string().url('BACKEND_API_URL must be a valid URL'),
-  BOT_API_SECRET: z.preprocess(
+  INTERNAL_API_KEY: z.preprocess(
     (v) => (typeof v === 'string' ? v.trim() : v),
-    z.string().min(1, 'BOT_API_SECRET is required'),
+    z.string().min(1, 'INTERNAL_API_KEY is required'),
   ),
   WEB_APP_URL: z.string().url('WEB_APP_URL must be a valid URL'),
   TELEGRAM_ADMIN_IDS: z

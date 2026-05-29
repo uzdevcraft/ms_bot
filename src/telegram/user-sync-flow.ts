@@ -5,6 +5,7 @@ import { openStoreKeyboard } from './web-app-keyboard.js';
 import { removeReplyKeyboard } from './contact-keyboard.js';
 import type { NameParts } from '../types/telegram-user-payload.js';
 import { loggableHttpError } from '../utils/loggable-http-error.js';
+import { formatBotErrorMessage } from '../utils/user-facing-error-code.js';
 
 export async function postUserSync(
   ctx: CommandContext,
@@ -25,7 +26,10 @@ export async function postUserSync(
     await ctx.admins.notify(`User sync failed for telegram_id=${payload.telegram_id}. Check logs.`);
     await bot.sendMessage(
       chatId,
-      'Hozircha server bilan bog‘lanib bo‘lmadi. Bir ozdan keyin qayta urinib ko‘ring.',
+      formatBotErrorMessage(
+        'Hozircha server bilan bog‘lanib bo‘lmadi. Bir ozdan keyin qayta urinib ko‘ring.',
+        err,
+      ),
     );
     return false;
   }

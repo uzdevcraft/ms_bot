@@ -1,7 +1,7 @@
 import axios, { type AxiosInstance } from 'axios';
 import axiosRetry from 'axios-retry';
 import type { AppConfig } from '../config/env.js';
-import { BOT_API_SECRET_HEADER } from '../config/constants.js';
+import { INTERNAL_API_KEY_HEADER } from '../config/constants.js';
 import type { Logger } from '../logging/logger.js';
 
 export function createBackendHttpClient(config: AppConfig, log: Logger): AxiosInstance {
@@ -11,7 +11,7 @@ export function createBackendHttpClient(config: AppConfig, log: Logger): AxiosIn
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      [BOT_API_SECRET_HEADER]: config.BOT_API_SECRET,
+      [INTERNAL_API_KEY_HEADER]: config.INTERNAL_API_KEY,
     },
     validateStatus: (status) => status >= 200 && status < 300,
   });

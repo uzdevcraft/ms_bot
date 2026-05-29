@@ -7,5 +7,5 @@ export const DEFAULT_LISTEN_PORT = 3005;
  */
 export const BACKEND_TELEGRAM_USER_SYNC_PATH = '/api/v1/internal/users/sync';
 
-/** Must match backend expectation (same value as server `BOT_API_SECRET`). */
-export const BOT_API_SECRET_HEADER = 'X-Bot-Secret';
+/** Must match backend `INTERNAL_API_KEY` (sent as `x-internal-api-key`). */
+export const INTERNAL_API_KEY_HEADER = 'X-Internal-Api-Key';
